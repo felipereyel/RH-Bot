@@ -24,7 +24,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    rh_channel = client.get_channel(os.getenv("RH_ID"))
+    rh_channel = client.get_channel(int(os.getenv("RH_ID")))
 
     if message.content.startswith(RH_CALL):
         reference = message.content.replace(RH_CALL, "").strip()
