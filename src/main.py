@@ -7,7 +7,6 @@ from rh import rh, RH_CALL
 intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents=intents)
-rh_channel = client.get_channel(int(os.getenv("RH_BOT_RHCHID")))
 
 
 @client.event
@@ -21,7 +20,7 @@ async def on_message(message):
         return
 
     if message.content.startswith(RH_CALL):
-        await rh(client, message, rh_channel)
+        await rh(client, message)
         return
 
     if message.content.startswith(SUMMON_CALL):
