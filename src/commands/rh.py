@@ -7,6 +7,10 @@ rh_state = {}
 CALL = "rh"
 
 
+def match(message):
+    return message.content.startswith(CALL)
+
+
 async def execute(client, message):
     rh_channel = client.get_channel(int(os.getenv("RH_BOT_RHCHID")))
     [reference, search] = search_user(CALL, message.content)

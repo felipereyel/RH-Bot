@@ -5,6 +5,10 @@ from commands.utils import search_user
 CALL = "sm"
 
 
+def match(message):
+    return message.content.startswith(CALL)
+
+
 async def execute(client, message):
     ref_channel = None
     for channel in client.get_all_channels():

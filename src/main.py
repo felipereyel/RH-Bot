@@ -18,9 +18,9 @@ async def on_message(message):
         return
 
     for cmd in commands:
-        if message.content.startswith(cmd.CALL):
+        if cmd.match(message):
             await cmd.execute(client, message)
-            break
+            return
 
 
 client.run(os.getenv("RH_BOT_DISCTOKEN"))
