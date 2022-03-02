@@ -17,7 +17,7 @@ chmod +x export_envs.sh
 ## Running directly
 
 ``` sh
-./export_envs.sh && python main.py 
+./export_envs.sh && python src/main.py 
 ```
 
 ## Running with pm2
@@ -26,7 +26,7 @@ First install pm2. I did with npm: `sudo npm install pm2 -g`
 
 ### First Start
 
-./export_envs.sh && pm2 start main.py --name RHBot --interpreter python3
+./export_envs.sh && pm2 start src/main.py --name RHBot --interpreter python3
 
 ### Reload App with envs
 
