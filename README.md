@@ -6,6 +6,28 @@ Fun Discord Bot for moving users around
 
 See requirements.txt
 
-## Running
+## Env Script
 
-export into the env the info required in .env.example and run it with python
+Fill the required information on the `export_envs.sh` and make it executable:
+
+``` sh
+chmod +x export_envs.sh
+```
+
+## Running directly
+
+``` sh
+./export_envs.sh && python main.py 
+```
+
+## Running with pm2
+
+First install pm2. I did with npm: `sudo npm install pm2 -g`
+
+### First Start
+
+./export_envs.sh && pm2 start main.py --name RHBot --interpreter python3
+
+### Reload App with envs
+
+./export_envs.sh && pm2 restart RHBot --update-env
