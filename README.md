@@ -8,16 +8,12 @@ See requirements.txt
 
 ## Env Script
 
-Fill the required information on the `export_envs.sh` and make it executable:
-
-``` sh
-chmod +x export_envs.sh
-```
+Fill the required information on the `export_envs.sh`
 
 ## Running directly
 
-``` sh
-./export_envs.sh && python src/main.py 
+```sh
+./export_envs.sh && python src/main.py
 ```
 
 ## Running with pm2
