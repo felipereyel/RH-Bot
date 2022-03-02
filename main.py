@@ -24,7 +24,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    rh_channel = client.get_channel(int(os.getenv("RH_ID")))
+    rh_channel = client.get_channel(int(os.getenv("RH_BOT_RHCHID")))
 
     if message.content.startswith(RH_CALL):
         reference = message.content.replace(RH_CALL, "").strip()
@@ -94,4 +94,4 @@ async def on_message(message):
             await message.channel.send("Nao achei o usuario")
 
 
-client.run(os.getenv("TOKEN"))
+client.run(os.getenv("RH_BOT_DISCTOKEN"))
