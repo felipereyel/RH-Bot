@@ -6,14 +6,17 @@ Fun Discord Bot for moving users around
 
 See requirements.txt
 
-## Env Script
+## Enviroment variables
 
-Fill the required information on the `export_envs.sh`
+You need to have the following enviroment variables loaded:
+
+- RH_BOT_DISCTOKEN: token of the discord bot account
+- RH_BOT_RHCHID: channel if of the RH channel
 
 ## Running directly
 
 ```sh
-./export_envs.sh && python src/main.py
+python src/main.py
 ```
 
 ## Running with pm2
@@ -22,8 +25,8 @@ First install pm2. I did with npm: `sudo npm install pm2 -g`
 
 ### First Start
 
-./export_envs.sh && pm2 start src/main.py --name RHBot --interpreter python3
+pm2 start src/main.py --name RHBot --interpreter python3
 
 ### Reload App with envs
 
-./export_envs.sh && pm2 restart RHBot --update-env
+pm2 restart RHBot --update-env

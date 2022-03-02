@@ -1,4 +1,0 @@
-#!/bin/sh
-
-export RH_BOT_RHCHID=<CHANNEL ID>
-export RH_BOT_DISCTOKEN=<DISCORD TOKEN>
