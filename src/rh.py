@@ -5,7 +5,8 @@ RH_CALL = "rh"
 
 rh_state = {}
 
-def rh(client, message, rh_channel):
+
+async def rh(client, message, rh_channel):
     [reference, search] = search_user(RH_CALL, message.content)
 
     if not search:
@@ -21,9 +22,7 @@ def rh(client, message, rh_channel):
 
     if len(user_rh_state) < NUM_VOTES - 1:
         rh_state[user_id] = [*user_rh_state, message.author.id]
-        await message.channel.send(
-            f"{reference} {len(rh_state[user_id])}/{NUM_VOTES}"
-        )
+        await message.channel.send(f"{reference} {len(rh_state[user_id])}/{NUM_VOTES}")
     else:
         for member in client.get_all_members():
             if member.id == user_id:

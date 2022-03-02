@@ -4,7 +4,8 @@ from utils import search_user
 
 SUMMON_CALL = "sm"
 
-def summon(client, message):
+
+async def summon(client, message):
     ref_channel = None
     for channel in client.get_all_channels():
         if not isinstance(channel, VoiceChannel):
