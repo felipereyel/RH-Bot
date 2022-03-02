@@ -10,8 +10,8 @@ See requirements.txt
 
 You need to have the following enviroment variables loaded:
 
-- RH_BOT_DISCTOKEN: token of the discord bot account
-- RH_BOT_RHCHID: channel if of the RH channel
+- `RH_BOT_DISCTOKEN`: token of the discord bot account
+- `RH_BOT_RHCHID`: channel if of the RH channel
 
 ## Running directly
 
@@ -21,12 +21,21 @@ python src/main.py
 
 ## Running with pm2
 
-First install pm2. I did with npm: `sudo npm install pm2 -g`
+First install pm2.  
+
+I did with npm: 
+```sh
+sudo npm install pm2 -g
+```
 
 ### First Start
 
+```sh
 pm2 start src/main.py --name RHBot --interpreter python3
+```
 
 ### Reload App with envs
 
+```sh
 pm2 restart RHBot --update-env
+```
