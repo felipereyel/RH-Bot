@@ -1,16 +1,15 @@
 import os
 
-from utils import search_user
+from commands.utils import search_user
 
 NUM_VOTES = 2
-RH_CALL = "rh"
-
 rh_state = {}
+CALL = "rh"
 
 
-async def rh(client, message):
+async def execute(client, message):
     rh_channel = client.get_channel(int(os.getenv("RH_BOT_RHCHID")))
-    [reference, search] = search_user(RH_CALL, message.content)
+    [reference, search] = search_user(CALL, message.content)
 
     if not search:
         await message.channel.send("Nao entendi oq ce disse")

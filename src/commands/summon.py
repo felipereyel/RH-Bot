@@ -1,11 +1,11 @@
 from discord.channel import VoiceChannel
 
-from utils import search_user
+from commands.utils import search_user
 
-SUMMON_CALL = "sm"
+CALL = "sm"
 
 
-async def summon(client, message):
+async def execute(client, message):
     ref_channel = None
     for channel in client.get_all_channels():
         if not isinstance(channel, VoiceChannel):
@@ -18,7 +18,7 @@ async def summon(client, message):
         await message.channel.send("voce nao esta conectado")
         return
 
-    [reference, search] = search_user(SUMMON_CALL, message.content)
+    [reference, search] = search_user(CALL, message.content)
 
     if not search:
         await message.channel.send("Nao entendi oq ce disse")

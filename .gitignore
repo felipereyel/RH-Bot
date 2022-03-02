@@ -1,2 +1,2 @@
 export_envs.sh
-src/__pycache__
+__pycache__

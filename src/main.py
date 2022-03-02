@@ -1,8 +1,6 @@
 import discord
 import os
-
-from summon import summon, SUMMON_CALL
-from rh import rh, RH_CALL
+from commands import commands
 
 intents = discord.Intents.default()
 intents.members = True
@@ -19,13 +17,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith(RH_CALL):
-        await rh(client, message)
-        return
-
-    if message.content.startswith(SUMMON_CALL):
-        await summon(client, message)
-        return
+    for cmd in commands:
+        if message.content.startswith(cmd.CALL):
+            await cmd.execute(client, message)
+            break
 
 
 client.run(os.getenv("RH_BOT_DISCTOKEN"))
