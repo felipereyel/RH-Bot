@@ -1,3 +1,4 @@
+from datetime import timedelta
 import os
 
 from commands.utils import search_user
@@ -22,12 +23,20 @@ async def execute(client, message):
     user_id = int(search.groups()[0])
 
     user_rh_state = rh_state.get(user_id, [])
-    if message.author.id in user_rh_state:
+    clean_rh_state = [
+        old_vote
+        for old_vote in user_rh_state
+        if old_vote["date"] > message.created_at - timedelta(hours=1)
+    ]
+    members_who_voted = [state["user"] for state in clean_rh_state]
+
+    if message.author.id in members_who_voted:
         await message.channel.send("Voce ja votou")
         return
 
-    if len(user_rh_state) < NUM_VOTES - 1:
-        rh_state[user_id] = [*user_rh_state, message.author.id]
+    if len(clean_rh_state) < NUM_VOTES - 1:
+        vote = {"user": message.author.id, "date": message.created_at}
+        rh_state[user_id] = [*clean_rh_state, vote]
         await message.channel.send(f"{reference} {len(rh_state[user_id])}/{NUM_VOTES}")
     else:
         for member in client.get_all_members():
